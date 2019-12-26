@@ -1,0 +1,50 @@
+<div class="example-container mat-elevation-z8">
+
+  <div class="row" style="padding-left: 2em;">
+    <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+
+      <div class="form-group" [class.has-error]="uname.invalid && uname.touched" [class.has-success]="uname.valid">
+        <label class="control-label" style="font-size: 16pt; font-weight: bold;">Full Name : </label>
+        <input name="userName" [(ngModel)]="fullName" required #uname="ngModel">
+        <span class="help-block" *ngIf="uname.invalid && uname.touched">Full Name is required</span>
+      </div>
+
+      <div style="font-size: 16pt;"><b>Pristine :</b> {{uname.pristine}} </div>
+      <div style="font-size: 16pt;"><b>Dirty :</b> {{uname.dirty}} </div>
+      <div style="font-size: 16pt;"><b>touched :</b>  {{uname.touched}}</div>
+      <div style="font-size: 16pt;"><b>untouched :</b> {{uname.untouched}}</div>
+      <div style="font-size: 16pt;"><b>Valid :</b> {{uname.valid}}</div>
+      <div style="font-size: 16pt;"><b>Invalid :</b> {{uname.invalid}}</div>
+
+      ----------------------------------------------------------------------------------
+      <br />
+
+      <div class="form-group" [class.has-error]="pass.invalid && pass.touched" [class.has-success]="pass.valid">
+        <label class="control-label" style="font-size: 16pt; font-weight: bold;">Password : </label>
+        <input name="password" [(ngModel)]="password" required #pass="ngModel">
+        <span class="help-block" *ngIf="pass.invalid && pass.touched">Password is required</span>
+      </div>
+
+      <div style="font-size: 16pt;"><b>Pristine :</b> {{pass.pristine}} </div>
+      <div style="font-size: 16pt;"><b>Dirty :</b> {{pass.dirty}}</div>
+      <div style="font-size: 16pt;"><b>touched :</b> {{pass.touched}}</div>
+      <div style="font-size: 16pt;"><b>untouched :</b> {{pass.untouched}}</div>
+      <div style="font-size: 16pt;"><b>Valid :</b> {{pass.valid}}</div>
+      <div style="font-size: 16pt;"><b>Invalid :</b> {{pass.invalid}}</div>
+
+      ----------------------------------------------------------------------------------
+
+      <div style="font-size: 16pt;"><h3>Form features</h3></div>
+      <div style="font-size: 16pt;"><b>Pristine :</b> {{userForm.pristine}}</div>
+      <div style="font-size: 16pt;"><b>Dirty :</b> {{userForm.dirty}}</div>
+      <div style="font-size: 16pt;"><b>touched :</b> {{userForm.touched}}</div>
+      <div style="font-size: 16pt;"><b>untouched :</b> {{userForm.untouched}}</div>
+      <div style="font-size: 16pt;"><b>Valid :</b> {{userForm.valid}}</div>
+      <div style="font-size: 16pt;"><b>Invalid :</b> {{userForm.invalid}}</div>
+
+      <div>
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
