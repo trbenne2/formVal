@@ -5,8 +5,9 @@
 
       <div class="form-group" [class.has-error]="uname.invalid && uname.touched" [class.has-success]="uname.valid">
         <label class="control-label" style="font-size: 16pt; font-weight: bold;">Full Name : </label>
-        <input name="userName" [(ngModel)]="fullName" required #uname="ngModel">
-        <span class="help-block" *ngIf="uname.invalid && uname.touched">Full Name is required</span>
+        <input id="uname" name="uname" [(ngModel)]="fullName" required #uname="ngModel" pattern="[A-Za-z ]*">
+        <span class="help-block" *ngIf="uname.error?.required && uname.touched">Full Name is required</span>
+        <span class="help-block" *ngIf="uname.error?.pattern && uname.touched">Full Name is invald</span>
       </div>
 
       <div style="font-size: 16pt;"><b>Pristine :</b> {{uname.pristine}} </div>
@@ -21,8 +22,9 @@
 
       <div class="form-group" [class.has-error]="pass.invalid && pass.touched" [class.has-success]="pass.valid">
         <label class="control-label" style="font-size: 16pt; font-weight: bold;">Password : </label>
-        <input name="password" [(ngModel)]="password" required #pass="ngModel">
-        <span class="help-block" *ngIf="pass.invalid && pass.touched">Password is required</span>
+        <input name="password" [(ngModel)]="password" required #pass="ngModel" pattern="[A-Za-z]*">
+        <span class="help-block" *ngIf="pass.error?.required && pass.touched">Password is required</span>
+        <span class="help-block" *ngIf="pass.error?.pattern && pass.touched">Password is invalid</span>
       </div>
 
       <div style="font-size: 16pt;"><b>Pristine :</b> {{pass.pristine}} </div>
