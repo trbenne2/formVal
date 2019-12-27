@@ -6,8 +6,15 @@
       <div class="form-group" [class.has-error]="uname.invalid && uname.touched" [class.has-success]="uname.valid">
         <label class="control-label" style="font-size: 16pt; font-weight: bold;">Full Name : </label>
         <input id="uname" name="uname" [(ngModel)]="fullName" required #uname="ngModel" pattern="[A-Za-z ]*">
-        <span class="help-block" *ngIf="uname.error?.required && uname.touched">Full Name is required</span>
-        <span class="help-block" *ngIf="uname.error?.pattern && uname.touched">Full Name is invald</span>
+        <span class="help-block" 
+          *ngIf="uname.errors?.required && uname.touched">
+          Full Name is required
+        </span>
+        <span 
+          class="help-block" 
+          *ngIf="uname.errors?.pattern && uname.touched">
+          Full Name is invald
+        </span>
       </div>
 
       <div style="font-size: 16pt;"><b>Pristine :</b> {{uname.pristine}} </div>
@@ -23,8 +30,8 @@
       <div class="form-group" [class.has-error]="pass.invalid && pass.touched" [class.has-success]="pass.valid">
         <label class="control-label" style="font-size: 16pt; font-weight: bold;">Password : </label>
         <input name="password" [(ngModel)]="password" required #pass="ngModel" pattern="[A-Za-z]*">
-        <span class="help-block" *ngIf="pass.error?.required && pass.touched">Password is required</span>
-        <span class="help-block" *ngIf="pass.error?.pattern && pass.touched">Password is invalid</span>
+        <span class="help-block" *ngIf="pass.errors?.required && pass.touched">Password is required</span>
+        <span class="help-block" *ngIf="pass.errors?.pattern && pass.touched">Password is invalid</span>
       </div>
 
       <div style="font-size: 16pt;"><b>Pristine :</b> {{pass.pristine}} </div>
@@ -33,6 +40,22 @@
       <div style="font-size: 16pt;"><b>untouched :</b> {{pass.untouched}}</div>
       <div style="font-size: 16pt;"><b>Valid :</b> {{pass.valid}}</div>
       <div style="font-size: 16pt;"><b>Invalid :</b> {{pass.invalid}}</div>
+
+      ----------------------------------------------------------------------------------
+
+      <div class="form-group" [class.has-error]="state.touched && state.invalid">
+        <label for="state" class="control-label">
+          State
+        </label>
+        <select id="state" name="state" [(ngModel)]="state"
+          class="form-control" required #state="ngModel">
+          <option disabled [ngValue]="-1">Select State</option>
+          <option *ngFor="let stat of states" [ngValue]="stat">
+            {{stat.name}}
+          </option>
+        </select>
+        <span class="help-block" *ngIf="state.touched && state.invalid">State is required</span>
+      </div>
 
       ----------------------------------------------------------------------------------
 
